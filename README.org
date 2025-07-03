@@ -7,16 +7,16 @@ Either messaging the bot directly, or with it present in your Discord server:
 ~!beastie <beastie_name>~
 e.g. ~!beastie trat~ or ~!beastie AXOLATI~ to grab the details for Trat or Axolati respectively.
 ** Feature Requests [0/3]
-*** TODO Add ally training stats (EV yields) to output
-This information is stored in the data file as ~tyield~.
-*** TODO Add command fetching the list of beasties that get a certain play
-*** TODO Shorthand/just-stats command (!b)
-#+begin_quote
-I would like to recommend a command “!b” which is just a shorter version of “!beastie” which just shows the stats and reduces the words to be
-BP/D: x/x
-SP/D: x/x
-MP/D: x/x
-#+end_quote
+- [ ] Add ally training stats (EV yields) to output
+  This information is stored in the data file as ~tyield~.
+- [ ] Add command fetching the list of beasties that may learn a certain play
+- [ ] Shorthand/just-stats command (!b)
+  #+begin_quote
+  I would like to recommend a command “!b” which is just a shorter version of “!beastie” which just shows the stats and reduces the words to be
+  BP/D: x/x
+  SP/D: x/x
+  MP/D: x/x
+  #+end_quote
 ** Running for yourself
 *** Set your discord bot's token:
 Create a file in the root directory of the project called ~.env~, it's contents should look something like the following:
