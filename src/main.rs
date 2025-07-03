@@ -60,14 +60,14 @@ fn to_beastie(value: Value) -> Beastie {
 
 fn to_detail_string(beastie: &Beastie) -> String {
     let mut details = format!("__**{}:**__\n", beastie.name);
-    details.push_str("```");
-    details.push_str(&format!("Body    POW/DEF: {}/{}\n",
+    details.push_str("```ansi\n");
+    details.push_str(&format!("[2;33mBody[0m    POW/DEF: {}/{}\n",
                               pad_stat(beastie.body_pow),
                               pad_stat(beastie.body_def)));
-    details.push_str(&format!("Spirit  POW/DEF: {}/{}\n",
+    details.push_str(&format!("[2;31mSpirit[0m  POW/DEF: {}/{}\n",
                               pad_stat(beastie.spirit_pow),
                               pad_stat(beastie.spirit_def)));
-    details.push_str(&format!("Mind    POW/DEF: {}/{}",
+    details.push_str(&format!("[2;34mMind[0m    POW/DEF: {}/{}",
                               pad_stat(beastie.mind_pow),
                               pad_stat(beastie.mind_def)));
     details.push_str("```\n");
@@ -90,8 +90,8 @@ fn get_beastie(beastie_name: &str) -> Option<Beastie> {
 
 fn pad_stat(stat: u32) -> String {
     match stat {
-        s if s < 10 => "00".to_owned() + &stat.to_string(),
-        s if s < 100 => "0".to_owned() + &stat.to_string(),
+        s if s < 10 => "[2;30m00[0m".to_owned() + &stat.to_string(),
+        s if s < 100 => "[2;30m0[0m".to_owned() + &stat.to_string(),
         _ => stat.to_string()
     }
 }
@@ -126,9 +126,10 @@ mod tests {
     fn handle_beastie_command_gets_details_for_beastie() {
         let input = "!beastie trat";
         let expected_output = "__**Trat:**__
-```Body    POW/DEF: 081/049
-Spirit  POW/DEF: 023/093
-Mind    POW/DEF: 064/084```
+```ansi
+[2;33mBody[0m    POW/DEF: [2;30m0[0m81/[2;30m0[0m49
+[2;31mSpirit[0m  POW/DEF: [2;30m0[0m23/[2;30m0[0m93
+[2;34mMind[0m    POW/DEF: [2;30m0[0m64/[2;30m0[0m84```
 > They are often found in dumpsters. When they outgrow their can, Trats will gather with many others to exchange for larger cans.";
 
         let actual_output = handle_beastie_command(input);
@@ -170,9 +171,10 @@ Mind    POW/DEF: 064/084```
         };
 
         let expected_output = "__**Test Beastie:**__
-```Body    POW/DEF: 001/002
-Spirit  POW/DEF: 003/004
-Mind    POW/DEF: 005/006```
+```ansi
+[2;33mBody[0m    POW/DEF: [2;30m00[0m1/[2;30m00[0m2
+[2;31mSpirit[0m  POW/DEF: [2;30m00[0m3/[2;30m00[0m4
+[2;34mMind[0m    POW/DEF: [2;30m00[0m5/[2;30m00[0m6```
 > Test Description";
 
         let actual_output = to_detail_string(&input);
@@ -183,7 +185,7 @@ Mind    POW/DEF: 005/006```
     #[test]
     fn pad_stat_double_pads_stats_lower_than_10() {
         let input = 9;
-        let expected_output = "009";
+        let expected_output = "[2;30m00[0m9";
 
         let actual_output = pad_stat(input);
 
@@ -193,7 +195,7 @@ Mind    POW/DEF: 005/006```
     #[test]
     fn pad_stat_pads_stats_lower_than_100() {
         let input = 99;
-        let expected_output = "099";
+        let expected_output = "[2;30m0[0m99";
 
         let actual_output = pad_stat(input);
 
