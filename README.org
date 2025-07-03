@@ -1,0 +1,35 @@
+* Beastie Bot
+A Beastieball Discord Bot
+[[https://discord.com/oauth2/authorize?client_id=1389963050580185148&permissions=2048&integration_type=0&scope=bot][Invite Link]]
+** Current Features
+*** Grab Beasties Stats & Description
+Either messaging the bot directly, or with it present in your Discord server:
+~!beastie <beastie_name>~
+e.g. ~!beastie trat~ or ~!beastie AXOLATI~ to grab the details for Trat or Axolati respectively.
+** Feature Requests [0/3]
+*** TODO Add ally training stats (EV yields) to output
+This information is stored in the data file as ~tyield~.
+*** TODO Add command fetching the list of beasties that get a certain play
+*** TODO Shorthand/just-stats command (!b)
+#+begin_quote
+I would like to recommend a command “!b” which is just a shorter version of “!beastie” which just shows the stats and reduces the words to be
+BP/D: x/x
+SP/D: x/x
+MP/D: x/x
+#+end_quote
+** Running for yourself
+*** Set your discord bot's token:
+Create a file in the root directory of the project called ~.env~, it's contents should look something like the following:
+#+begin_src .env
+DISCORD_TOKEN=<your discord application's token>
+#+end_src
+You can grab your bot's token from the =Bot= section of Discord developer portal.
+*** Install Rust
+[[https://www.rust-lang.org/tools/install]]
+*** Run the bot!
+From the project's root directory:
+#+begin_src bash
+  cargo run
+#+end_src
+** Special Thanks
+Thanks to =JdavisBro= who the data file was nabbed off. [[https://github.com/JdavisBro/beastieball/tree/main][Their repository]]
